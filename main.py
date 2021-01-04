@@ -12,28 +12,44 @@ if len(size_input) == 2:
         b = []
         for k in range(a[1]):
             b.append(int("0"))
-        b[0] = a[1]
-        if a[1] % 2 == 0:
+        if a[1] % 2 != 0:
+            b[0] = a[0] / a[1]
             for i in range(a[1]):
                 for j in range(a[1]):
                     if i % 2 == 0:
                         color = pygame.Color(250, 250, 250)
-                        pygame.draw.rect(screen, color, (b[0], b[1], a[1], a[1]), 0)
-                        b[0] += a[1] * 2
+                        pygame.draw.rect(screen, color, (b[0], b[1], a[0] / a[1], a[0] / a[1]), 0)
+                        b[0] += a[0] / a[1] * 2
                         if j == a[1] - 1:
                             b[0] = 0
 
                     if i % 2 != 0:
                         color = pygame.Color(250, 250, 250)
-                        pygame.draw.rect(screen, color, (b[0], b[1], a[1], a[1]), 0)
-                        b[0] += a[1] * 2
+                        pygame.draw.rect(screen, color, (b[0], b[1], a[0] / a[1], a[0] / a[1]), 0)
+                        b[0] += a[0] / a[1] * 2
                         if j == a[1] - 1:
-                            b[0] = 50
-                b[1] += 50
+                            b[0] = a[0] / a[1]
+                b[1] += a[0] / a[1]
+        if a[1] % 2 == 0:
+            for i in range(a[1]):
+                for j in range(a[1]):
+                    if i % 2 == 0:
+                        color = pygame.Color(250, 250, 250)
+                        pygame.draw.rect(screen, color, (b[0], b[1], a[0] / a[1], a[0] / a[1]), 0)
+                        b[0] += a[0] / a[1] * 2
+                        if j == a[1] - 1:
+                            b[0] = a[0] / a[1]
+
+                    if i % 2 != 0:
+                        color = pygame.Color(250, 250, 250)
+                        pygame.draw.rect(screen, color, (b[0], b[1], a[0] / a[1], a[0] / a[1]), 0)
+                        b[0] += a[0] / a[1] * 2
+                        if j == a[1] - 1:
+                            b[0] = 0
+                b[1] += a[0] / a[1]
 
         print(b)
         pygame.display.flip()
     while pygame.event.wait().type != pygame.QUIT:
         pass
     pygame.quit()
-
